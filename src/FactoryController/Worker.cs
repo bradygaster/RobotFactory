@@ -14,7 +14,7 @@ namespace FactoryController
     public class Worker : BackgroundService
     {
         private const string DASHBOARD_QUEUE_CONNECTION_STRING = "DASHBOARD_QUEUE_CONNECTION_STRING";
-        private const string DASHBOARD_QUEUE = "DASHBOARD_QUEUE";
+        private const string DASHBOARD_QUEUE = "dashboardheartbeat";
 
         private readonly ILogger<Worker> _logger;
         HttpClient _httpClient;
@@ -55,7 +55,7 @@ namespace FactoryController
             CloudStorageAccount storageAccount = null;
 
             var success = CloudStorageAccount.TryParse(
-                Environment.GetEnvironmentVariable("DASHBOARD_QUEUE_CONNECTION_STRING"),
+                Environment.GetEnvironmentVariable(DASHBOARD_QUEUE_CONNECTION_STRING),
                 out storageAccount
             );
 
@@ -66,6 +66,8 @@ namespace FactoryController
                 await queue.CreateIfNotExistsAsync();
                 await queue.AddMessageAsync(new CloudQueueMessage("FactoryControllerHeartbeat"));
             }
+
+            _logger.LogInformation("Sent dashboard heartbeat at: {time}", DateTimeOffset.Now);
         }
     }
 }
