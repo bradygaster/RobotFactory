@@ -18,7 +18,15 @@ namespace Dashboard
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost
+                .CreateDefaultBuilder(args)
+                .ConfigureLogging(builder => 
+                {
+                    builder.AddConsole(options =>
+                    {
+                        options.DisableColors = true;
+                    });
+                })
                 .UseStartup<Startup>();
     }
 }
