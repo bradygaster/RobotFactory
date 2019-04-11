@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "src/Dashboard"
+		},
+		{
+			"path": "src/FactoryController"
+		}
+	],
+	"settings": {}
+}

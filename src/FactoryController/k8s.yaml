@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factorycontroller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: factorycontroller
+  template:
+    metadata:
+      labels:
+        app: factorycontroller
+    spec:
+      containers:
+      - name: factorycontroller
+        imagePullPolicy: Always
+        image: bradygaster/factorycontroller:latest
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
