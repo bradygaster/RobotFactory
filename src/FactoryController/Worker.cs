@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
@@ -33,11 +34,9 @@ namespace FactoryController
                 
                 try
                 {
-                    if(_httpClient == null)
-                        _httpClient = new HttpClient();
-                        
-                    var result = await _httpClient.GetAsync("http://dashboard");
-                    _logger.LogInformation($"HTTP response from dashboard: {result.StatusCode}");
+                    //if(_httpClient == null) _httpClient = new HttpClient();  
+                    //var result = await _httpClient.GetAsync("http://dashboard");
+                    //_logger.LogInformation($"HTTP response from dashboard: {result.StatusCode}");
 
                     await EnqueueDashboardPing();
                 }
@@ -64,7 +63,7 @@ namespace FactoryController
                 var queueClient = storageAccount.CreateCloudQueueClient();
                 var queue = queueClient.GetQueueReference(DASHBOARD_QUEUE);
                 await queue.CreateIfNotExistsAsync();
-                await queue.AddMessageAsync(new CloudQueueMessage("FactoryControllerHeartbeat"));
+                await queue.AddMessageAsync(new CloudQueueMessage(Path.GetFileNameWithoutExtension(Path.GetRandomFileName())));
             }
 
             _logger.LogInformation("Sent dashboard heartbeat at: {time}", DateTimeOffset.Now);
