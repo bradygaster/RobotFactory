@@ -16,9 +16,7 @@ namespace FactoryController
     {
         private const string DASHBOARD_QUEUE_CONNECTION_STRING = "DASHBOARD_QUEUE_CONNECTION_STRING";
         private const string DASHBOARD_QUEUE = "dashboardheartbeat";
-
         private readonly ILogger<Worker> _logger;
-        HttpClient _httpClient;
 
         public Worker(ILogger<Worker> logger)
         {
@@ -34,10 +32,6 @@ namespace FactoryController
                 
                 try
                 {
-                    //if(_httpClient == null) _httpClient = new HttpClient();  
-                    //var result = await _httpClient.GetAsync("http://dashboard");
-                    //_logger.LogInformation($"HTTP response from dashboard: {result.StatusCode}");
-
                     await EnqueueDashboardPing();
                 }
                 catch(Exception ex)

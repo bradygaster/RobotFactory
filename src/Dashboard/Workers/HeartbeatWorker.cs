@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Dashboard.Hubs;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage;
@@ -13,12 +15,15 @@ namespace Dashboard.Workers
         private const string DASHBOARD_QUEUE_CONNECTION_STRING = "DASHBOARD_QUEUE_CONNECTION_STRING";
         private const string DASHBOARD_QUEUE = "dashboardheartbeat";
 
-        public HeartbeatWorker(ILogger<HeartbeatWorker> logger)
+        public HeartbeatWorker(ILogger<HeartbeatWorker> logger,
+            IHubContext<HeartbeatHub> hubContext)
         {
             Logger = logger;
+            HubContext = hubContext;
         }
 
         public ILogger<HeartbeatWorker> Logger { get; }
+        public IHubContext<HeartbeatHub> HubContext { get; }
         public CloudQueue CloudQueue { get; private set; }
 
         public override async Task StartAsync(CancellationToken stoppingToken)
@@ -66,11 +71,15 @@ namespace Dashboard.Workers
                         msg.AsString,
                         Environment.NewLine);
 
+                    await HubContext.Clients.All.SendAsync("heartbeatReceived", 
+                        msg.AsString, 
+                        DateTimeOffset.Now);
+
                     await CloudQueue.DeleteMessageAsync(msg);
                         
                     msg = await CloudQueue.GetMessageAsync();
                 }
-                await Task.Delay(5000, stoppingToken);
+                await Task.Delay(1000, stoppingToken);
             }
         }
     }
