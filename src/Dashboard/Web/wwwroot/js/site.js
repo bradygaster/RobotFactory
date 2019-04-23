@@ -2,8 +2,8 @@
     .withUrl('/heartbeat')
     .build();
 
-connection.on('heartbeatReceived', function(message, timestamp) {
-    document.getElementById('heartbeat').innerText = 'Last heartbeat message: ' + message;
+connection.on('heartbeatReceived', function(message, robot) {
+    document.getElementById('heartbeat').innerText = 'Robot ' + robot + ' is currently ' + message;
 });
 
 async function start() {

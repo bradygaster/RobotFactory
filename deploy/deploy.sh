@@ -1,6 +1,6 @@
 dockerHubAccount=bradygaster
 
-docker build --rm -f "../src/Dashboard/Dockerfile" -t $dockerHubAccount/dashboard:latest ../src/Dashboard
+docker build --rm -f "../src/Dashboard/Web/Dockerfile" -t $dockerHubAccount/dashboard:latest ../src/Dashboard/Web
 docker build --rm -f "../src/ChargeBot/Dockerfile" -t $dockerHubAccount/chargebot:latest ../src/ChargeBot
 docker build --rm -f "../src/MonitorBot/Dockerfile" -t $dockerHubAccount/monitorbot:latest ../src/MonitorBot
 docker build --rm -f "../src/RepairBot/Dockerfile" -t $dockerHubAccount/repairbot:latest ../src/RepairBot
