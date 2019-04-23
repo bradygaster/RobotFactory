@@ -5,9 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dashboard", "Dashboard", "{5BDE8E2A-D7E9-4032-A48E-BEA101B61D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.Interfaces", "Dashboard\Dashboard.Interfaces\Dashboard.Interfaces.csproj", "{3063C790-96AD-4CEA-B44D-85891347BD53}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Web\Dashboard.csproj", "{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard", "Dashboard\Dashboard.csproj", "{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargeBot", "ChargeBot\ChargeBot.csproj", "{8F79328F-BF63-4E1E-BBEA-CA18023B2FCF}"
 EndProject
@@ -30,18 +28,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|x64.Build.0 = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Debug|x86.Build.0 = Debug|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|x64.ActiveCfg = Release|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|x64.Build.0 = Release|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|x86.ActiveCfg = Release|Any CPU
-		{3063C790-96AD-4CEA-B44D-85891347BD53}.Release|x86.Build.0 = Release|Any CPU
 		{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -104,7 +90,6 @@ Global
 		{EEBD76A2-2212-47C2-8019-68D25597352A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3063C790-96AD-4CEA-B44D-85891347BD53} = {5BDE8E2A-D7E9-4032-A48E-BEA101B61D76}
 		{8D72DBFC-479D-4BD7-BC95-3A49EE7D2F0A} = {5BDE8E2A-D7E9-4032-A48E-BEA101B61D76}
 	EndGlobalSection
 EndGlobal

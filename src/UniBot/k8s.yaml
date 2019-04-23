@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unibot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unibot
+  template:
+    metadata:
+      labels:
+        app: unibot
+    spec:
+      containers:
+      - name: unibot
+        imagePullPolicy: Always
+        image: bradygaster/unibot:latest
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi

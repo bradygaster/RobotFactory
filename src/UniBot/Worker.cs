@@ -5,14 +5,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Dashboard.Interfaces;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace UniBot
 {
     public class Worker : BackgroundService
     {
         private readonly ILogger<Worker> _logger;
-        DashboardClient _client;
+        private HubConnection Connection { get; set; }
 
         public Worker(ILogger<Worker> logger)
         {
@@ -22,7 +22,21 @@ namespace UniBot
         #pragma warning disable CS4014, CS1998
         public override async Task StartAsync(CancellationToken stoppingToken)
         {
-            _client = DashboardClient.Start("UniBot");
+            try
+            {
+                Connection = new HubConnectionBuilder()
+                    .WithUrl("http://dashboard.robotfactory/heartbeat")
+                    .Build();
+
+                await Connection.StartAsync();
+
+                _logger.LogInformation("Dashboard client connected");
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError("Error during connection", ex);
+            }
+            
             base.StartAsync(stoppingToken);
         }
 
@@ -31,7 +45,18 @@ namespace UniBot
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                _client.SendStatus("Running");
+
+                try
+                {
+                    await Connection.InvokeAsync("SendHeartbeat", 
+                        "Running",
+                        "UniBot");
+                }
+                catch (System.Exception ex)
+                {
+                    _logger.LogError("Error sending heartbeat", ex);
+                }
+
                 await Task.Delay(1000, stoppingToken);
             }
         }
