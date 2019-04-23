@@ -1,8 +1,8 @@
-FROM microsoft/dotnet:2.2-aspnetcore-runtime AS base
+FROM glennc/nightly AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/dotnet:2.2-sdk AS build
+FROM glennc/nightly AS build
 WORKDIR /src
 COPY ["Dashboard.csproj", "./"]
 RUN dotnet restore "./Dashboard.csproj"

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>dotnet-ChargeBot-E6862DAB-3F0B-444A-B307-BAD50519EA58</UserSecretsId>
+    <UserSecretsId>dotnet-ChargeBot-B8C412E7-FA5C-4C63-B975-DBB7C3A2075D</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

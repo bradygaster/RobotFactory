@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: factorycontroller
+  name: monitorbot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: factorycontroller
+      app: monitorbot
   template:
     metadata:
       labels:
-        app: factorycontroller
+        app: monitorbot
     spec:
       containers:
-      - name: factorycontroller
+      - name: monitorbot
         imagePullPolicy: Always
-        image: bradygaster/factorycontroller:latest
+        image: bradygaster/monitorbot:latest
         resources:
           limits:
             cpu: 250m

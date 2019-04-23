@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>dotnet-RepairBot-791D4348-5C54-45C9-BA99-945249B64F56</UserSecretsId>
+    <UserSecretsId>dotnet-RepairBot-9681332D-9A64-4F9A-9266-1CB7AAABC5BF</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

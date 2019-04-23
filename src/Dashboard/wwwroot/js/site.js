@@ -1,9 +1,8 @@
 ﻿var connection = new signalR.HubConnectionBuilder()
-    .withUrl('/hubs/heartbeat')
+    .withUrl('/heartbeat')
     .build();
 
 connection.on('heartbeatReceived', function(message, timestamp) {
-    console.log(message + ' received at ' + timestamp);
     document.getElementById('heartbeat').innerText = 'Last heartbeat message: ' + message;
 });
 

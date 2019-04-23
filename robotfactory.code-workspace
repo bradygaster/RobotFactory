@@ -1,13 +1,22 @@
 {
 	"folders": [
 		{
-			"path": "."
-		},
-		{
 			"path": "src/Dashboard"
 		},
 		{
-			"path": "src/FactoryController"
+			"path": "src/ChargeBot"
+		},
+		{
+			"path": "src/MonitorBot"
+		},
+		{
+			"path": "src/RepairBot"
+		},
+		{
+			"path": "src/UniBot"
+		},
+		{
+			"path": "deploy"
 		}
 	],
 	"settings": {}

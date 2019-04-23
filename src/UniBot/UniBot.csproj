@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>dotnet-UniBot-34309BD3-D950-4ED1-8698-CDBC218EB50B</UserSecretsId>
+    <UserSecretsId>dotnet-UniBot-047C153E-6909-42AC-9F6A-38E18D6186DE</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

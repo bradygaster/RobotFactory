@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>dotnet-MonitorBot-3110616E-AB0E-4F9D-85E0-0A16AD7FF699</UserSecretsId>
+    <UserSecretsId>dotnet-MonitorBot-65F9825B-6781-4AC0-A341-F0E2653AF00B</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
