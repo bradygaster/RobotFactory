@@ -27,8 +27,8 @@ namespace MonitorBot
             try
             {
                 Connection = new HubConnectionBuilder()
-                    //.WithUrl("http://dashboard.robotfactory/heartbeat")
-                    .WithUrl("https://localhost:5001/heartbeat")
+                    .WithUrl("http://dashboard.robotworld/heartbeat")
+                    //.WithUrl("https://localhost:5001/heartbeat")
                     .Build();
 
                 await Connection.StartAsync();
