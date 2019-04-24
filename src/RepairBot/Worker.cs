@@ -47,13 +47,29 @@ namespace RepairBot
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
                 ChargeLevel -= 5;
+                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+
+                if((ChargeLevel - 5) <= 0)
+                {
+                    Connection.InvokeAsync("SendHeartbeat", 
+                        "Out of power",
+                        "RepairBot",
+                        0).Wait();
+
+                    await Connection.StopAsync();
+
+                    await StopAsync(stoppingToken);
+                }
 
                 try
                 {
+                    var status = ChargeLevel >= 40 ? "Running" :
+                        ChargeLevel >= 15 ? "Running on low power" :
+                        "About to shut down";
+
                     await Connection.InvokeAsync("SendHeartbeat", 
-                        "Running",
+                        status,
                         "RepairBot",
                         ChargeLevel);
                 }

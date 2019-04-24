@@ -14,6 +14,28 @@ connection.on('heartbeatReceived', function(message, robot, batteryLevel) {
     }
     document.getElementById(robot + '-status').innerText = message;
     document.getElementById(robot + '-level').innerText = batteryLevel;
+
+    if(batteryLevel > 40)
+    {
+        document.getElementById(robot + '-name').classList.remove('bg-warning');
+        document.getElementById(robot + '-name').classList.remove('bg-danger');
+        document.getElementById(robot + '-name').classList.remove('bg-success');
+        document.getElementById(robot + '-name').classList.add('bg-success');
+    }
+    else if(batteryLevel > 15)
+    {
+        document.getElementById(robot + '-name').classList.remove('bg-warning');
+        document.getElementById(robot + '-name').classList.remove('bg-danger');
+        document.getElementById(robot + '-name').classList.remove('bg-success');
+        document.getElementById(robot + '-name').classList.add('bg-warning');
+    }
+    else
+    {
+        document.getElementById(robot + '-name').classList.remove('bg-warning');
+        document.getElementById(robot + '-name').classList.remove('bg-danger');
+        document.getElementById(robot + '-name').classList.remove('bg-success');
+        document.getElementById(robot + '-name').classList.add('bg-danger');
+    }
 });
 
 async function start() {
