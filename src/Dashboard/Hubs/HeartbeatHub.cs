@@ -1,14 +1,21 @@
 using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 
 namespace Dashboard.Hubs
 {
     public class HeartbeatHub : Hub
     {
-        public void SendHeartbeat(string status, string robotName)
+        public async Task SendHeartbeat(string status, 
+            string robotName,
+            int batteryLevel)
         {
-            Clients.All.SendCoreAsync("heartbeatReceived", new object[] {
-                status, robotName
-            });
+            await Clients.All.SendCoreAsync("heartbeatReceived", 
+                new object[] 
+                {
+                    status,
+                    robotName,
+                    batteryLevel
+                });
         }
     }
 }

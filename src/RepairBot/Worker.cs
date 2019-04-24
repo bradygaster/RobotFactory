@@ -13,10 +13,12 @@ namespace RepairBot
     {
         private readonly ILogger<Worker> _logger;
         private HubConnection Connection { get; set; }
+        public int ChargeLevel { get; set; }
 
         public Worker(ILogger<Worker> logger)
         {
             _logger = logger;
+            ChargeLevel = 100;
         }
 
         #pragma warning disable CS4014, CS1998
@@ -25,7 +27,8 @@ namespace RepairBot
             try
             {
                 Connection = new HubConnectionBuilder()
-                    .WithUrl("http://dashboard.robotfactory/heartbeat")
+                    //.WithUrl("http://dashboard.robotfactory/heartbeat")
+                    .WithUrl("https://localhost:5001/heartbeat")
                     .Build();
 
                 await Connection.StartAsync();
@@ -45,19 +48,21 @@ namespace RepairBot
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                ChargeLevel -= 5;
 
                 try
                 {
                     await Connection.InvokeAsync("SendHeartbeat", 
                         "Running",
-                        "RepairBot");
+                        "RepairBot",
+                        ChargeLevel);
                 }
                 catch (System.Exception ex)
                 {
                     _logger.LogError("Error sending heartbeat", ex);
                 }
 
-                await Task.Delay(2000, stoppingToken);
+                await Task.Delay(3000, stoppingToken);
             }
         }
     }

@@ -1,16 +1,92 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Robot Factory Dashboard</title>
-  </head>
-  <body>
-    <h1>Robot Factory Dashboard</h1>
-    <h2>Latest heartbeat message</h2>
-    <p id="heartbeat"></p>
-    <script src="/js/signalr.js"></script>
-    <script src="/js/site.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+    integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+  <link href="/css/site.css">
+  <title>Robot World</title>
+</head>
+
+<body>
+  <header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong style="margin-right: 10px;">Status:</strong>
+          <span id="heartbeat">waiting...</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Robot World</h1>
+        <p class="lead text-muted">Each robot runs on a limited supply of power and will need to be recharged.
+          ChargeBot, a feature of Robot World, delivers an infinite supply of power to robots as they get low on power.
+        </p>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="mx-auto d-block" src="img/repairbot-off.png" id="RepairBot-img"/>
+              <div class="card-header bg-primary text-white">RepairBot</div>
+              <div class="card-body" id="RepairBot-status">Waiting for status</div>
+              <div class="card-body">
+                <small class="text-muted"><span class="oi oi-battery-full"></span>&nbsp;<span id="RepairBot-level">100</span>%</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="mx-auto d-block" src="img/monitorbot-off.png" id="MonitorBot-img"/>
+              <div class="card-header bg-primary text-white">MonitorBot</div>
+              <div class="card-body" id="MonitorBot-status">Waiting for status</div>
+              <div class="card-body">
+                <small class="text-muted"><span class="oi oi-battery-full"></span>&nbsp;<span id="MonitorBot-level">100</span>%</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img class="mx-auto d-block" src="img/unibot-off.png" id="UniBot-img"/>
+              <div class="card-header bg-primary text-white">UniBot</div>
+              <div class="card-body" id="UniBot-status">Waiting for status</div>
+              <div class="card-body">
+                <small class="text-muted"><span class="oi oi-battery-full"></span>&nbsp;<span id="UniBot-level">100</span>%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/js/signalr.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
 </html>
